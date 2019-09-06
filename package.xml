@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sintel_stereo_publisher</name>
+  <version>0.0.0</version>
+  <description>Publish stereo images from MPI Sintel Stereo Training Data</description>
+  <maintainer email="fujimoto@aisl.cs.tut.ac.jp">Hironori Fujimoto</maintainer>
+  <license>TODO</license>
+  <url type="website">https://aisl-serv6.aisl.cs.tut.ac.jp:20443/fujimoto/sintel_stereo_publisher</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <!-- ROS packages -->
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <!-- rosdep keys -->
+  <depend>boost</depend>
+  <depend>libopencv-dev</depend>
+</package>
