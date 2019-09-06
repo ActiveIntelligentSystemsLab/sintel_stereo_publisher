@@ -5,7 +5,7 @@
   <description>Publish stereo images from MPI Sintel Stereo Training Data</description>
   <maintainer email="fujimoto@aisl.cs.tut.ac.jp">Hironori Fujimoto</maintainer>
   <license>TODO</license>
-  <url type="website">https://aisl-serv6.aisl.cs.tut.ac.jp:20443/fujimoto/sintel_stereo_publisher</url>
+  <url type="website">https://github.com/ActiveIntelligentSystemsLab/sintel_stereo_publisher</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <!-- ROS packages -->
