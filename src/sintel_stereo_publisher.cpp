@@ -120,7 +120,7 @@ namespace sintel_stereo_publisher
     ros::Rate publish_rate_keeper(_publish_rate);
     ros::Rate service_rate_keeper(10.0);
 
-    while (!ros::ok() && _pause)
+    while (ros::ok() && _pause)
     {
       ros::spinOnce();
       service_rate_keeper.sleep();
