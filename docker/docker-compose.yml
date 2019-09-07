@@ -1,11 +1,11 @@
 version: "2.3"
 services:
-  sintel_master:
+  master:
     container_name: sintel_master
     image: ros:melodic-ros-core
     command: roscore
   
-  sintel_publisher:
+  publisher:
     container_name: sintel_publisher
     build: .
     command: >
@@ -17,7 +17,7 @@ services:
       - ROS_HOSTNAME=sintel_publisher
       - ROS_MASTER_URI=http://sintel_master:11311
   
-  sintel_viewer:
+  viewer:
     container_name: sintel_viewer
     image: osrf/ros:melodic-desktop-full
     command: >
