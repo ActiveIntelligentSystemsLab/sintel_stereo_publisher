@@ -9,7 +9,7 @@ RUN wget http://files.is.tue.mpg.de/jwulff/sintel/MPI-Sintel-depth-training-2015
 RUN wget http://files.is.tue.mpg.de/jwulff/sintel/MPI-Sintel-stereo-training-20150305.zip
 ENV SINTEL_DEPTH_DIR=/root/MPI-Sintel-depth-training
 RUN mkdir ${SINTEL_DEPTH_DIR} && \
-    unzip MPI-Sintel-stereo-training-20150305.zip -d ${SINTEL_DEPTH_DIR}
+    unzip MPI-Sintel-depth-training-20150305.zip -d ${SINTEL_DEPTH_DIR}
 ENV SINTEL_STEREO_DIR=/root/MPI-Sintel-stereo-training
 RUN mkdir ${SINTEL_STEREO_DIR} && \
     unzip MPI-Sintel-stereo-training-20150305.zip -d ${SINTEL_STEREO_DIR}
