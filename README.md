@@ -18,6 +18,12 @@ Publish stereo images from MPI Sintel Stereo Training Data.
 
   Also it contains information of published sequence.
 
+### Services
+
+* `~start_publish` ([std_srvs/Empty](http://docs.ros.org/api/std_srvs/html/srv/Empty.html))
+
+  Start publish topics when `~pause` param is true.
+
 ### Parameters
 
 * `~dataset_directory` (string, default: None)
@@ -55,6 +61,11 @@ Publish stereo images from MPI Sintel Stereo Training Data.
   Choose render pass from "clean" and "final".
 
   See [MPI Sintel Dataset's paper](http://sintel.is.tue.mpg.de/) to know about "render pass".
+
+* `~pause` (bool, default: "false")
+
+  Start in pause mode.
+  Publish don't start until `~start_publish` service is called.
 
 ## ROS Message Types
 

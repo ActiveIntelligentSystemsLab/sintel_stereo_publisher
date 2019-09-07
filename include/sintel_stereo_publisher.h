@@ -3,6 +3,7 @@
 #include <image_transport/image_transport.h>
 #include <ros/ros.h>
 #include <sensor_msgs/CameraInfo.h>
+#include <std_srvs/Empty.h>
 
 // From Non-ROS libraries
 #include <boost/filesystem.hpp>
@@ -57,6 +58,11 @@ namespace sintel_stereo_publisher
     ros::Publisher _sintel_info_publisher;
 
     /**
+     * @brief Provide ~start_publish service
+     */
+    ros::ServiceServer _start_publish_server;
+
+    /**
      * @brief Root directory of MPI Sintel Stereo Training Data, set by ROS param. 
      * 
      * Under the root directory, there should be `training` and `sdk` directories.
@@ -103,6 +109,11 @@ namespace sintel_stereo_publisher
     bool _loop;
 
     /**
+     * @brief If true, publish don't start until `~start_publish` service is called.
+     */
+    bool _pause;
+
+    /**
      * @brief Load intrinsic camera parameters from a file contained in MPI Sintel Depth Training Data
      */
     void loadCameraParameters(std::string camera_param_path);
@@ -114,6 +125,10 @@ namespace sintel_stereo_publisher
      * @brief Load stereo sequence and publish
      */
     void publishSequence();
+    /**
+     * @brief Callback of ~start_publish service
+     */
+    bool startPublishCallback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
     
   public:
     SintelStereoPublisher();

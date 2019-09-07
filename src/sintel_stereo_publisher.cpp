@@ -25,6 +25,8 @@ namespace sintel_stereo_publisher
 
     _sintel_info_publisher = _private_node_handle.advertise<sintel_stereo_publisher::SintelInfo>("sintel_info", 1);
 
+    _start_publish_server = _private_node_handle.advertiseService("start_publish", &SintelStereoPublisher::startPublishCallback, this);
+
     publishSequence();
   }
 
@@ -90,6 +92,7 @@ namespace sintel_stereo_publisher
 
     // Load other ROS parameters
     _loop = _private_node_handle.param<bool>("loop", false);
+    _pause = _private_node_handle.param<bool>("pause", false);
     _sequence_name = _private_node_handle.param<std::string>("sequence_name", "alley_1");
   }
 
@@ -115,6 +118,13 @@ namespace sintel_stereo_publisher
     sintel_info.sequence_name = _sequence_name;
 
     ros::Rate publish_rate_keeper(_publish_rate);
+    ros::Rate service_rate_keeper(10.0);
+
+    while (!ros::ok() && _pause)
+    {
+      ros::spinOnce();
+      service_rate_keeper.sleep();
+    }
 
     for (int frame_number = 1; frame_number <= _MAX_FRAME_NUMBER; frame_number++)
     {
@@ -165,5 +175,12 @@ namespace sintel_stereo_publisher
     ROS_INFO("Exit by Ctrl-C");
 
     ros::spin();
+  }
+
+  bool SintelStereoPublisher::startPublishCallback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response)
+  {
+    ROS_INFO("Start publishing");
+    _pause = false;
+    return true;
   }
 }
