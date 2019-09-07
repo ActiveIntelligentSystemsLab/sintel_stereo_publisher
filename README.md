@@ -2,6 +2,22 @@
 
 ROS package to publish stereo images from [MPI Sintel Stereo Training Data](http://sintel.is.tue.mpg.de/stereo).
 
+## Requirement
+
+* Docker
+* Docker Compose
+
+## Run with Docker
+
+```shell
+$ git clone https://github.com/ActiveIntelligentSystemsLab/sintel_stereo_publisher
+$ cd sintel_stereo_publisher
+$ xhost +local:root
+$ sudo docker-compose up
+```
+
+Then a image viewer window opens.
+
 ## Node: sintel_stereo_publisher
 
 Publish stereo images from MPI Sintel Stereo Training Data.
